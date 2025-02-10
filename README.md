@@ -46,9 +46,9 @@ THEN the next candidate's information should be displayed without saving the cur
 
 The following images show the web application's appearance and functionality:
 
-![The candidate search page displays a candidate's information and allows the user to accept or reject the candidate and view a list of potential candidates.](./Assets/13-01-candidate_search_homepage.png)
+![The candidate search page displays a candidate's information and allows the user to accept or reject the candidate and view a list of potential candidates.](./images/13-01-candidate_search_homepage.png)
 
-![The potential candidates page displays a list of potential candidates and allows the user to reject a candidate.](./Assets/13-02-candidate_search_potential_candidates.png)
+![The potential candidates page displays a list of potential candidates and allows the user to reject a candidate.](./images/13-02-candidate_search_potential_candidates.png)
 
 ## Getting Started
 
