@@ -5,13 +5,13 @@ import { searchGithub, searchGithubUser } from '../api/API';
 
 // Interface for Candidate Object
 interface Candidate {
-  login?: string;
   name?: string;
-  avatar_url?: string;
+  username?: string;
   location?: string;
+  avatar_url?: string;
   email?: string | null;
-  company?: string | null;
   html_url?: string;
+  company?: string | null;
 }
 
 const CandidateSearch = () => {
@@ -32,10 +32,10 @@ const CandidateSearch = () => {
 
         // For each user, call searchGithubUser to get the rest of the information
         const detailedUsers = await Promise.all(
-          users.map(async (user: { login: string }) => {
-            const userDetails = await searchGithubUser(user.login);
+          users.map(async (user: { username: string }) => {
+            const userDetails = await searchGithubUser(user.username);
             return {
-              login: user.login,
+              username: user.username,
               name: userDetails.name,
               avatar_url: userDetails.avatar_url,
               location: userDetails.location,
@@ -72,7 +72,7 @@ const CandidateSearch = () => {
     {/* Current Candidate Info */}
     {currentCandidate && (
         <div>
-          <h2>{currentCandidate.name || currentCandidate.login}</h2>
+          <h2>{currentCandidate.name || currentCandidate.username}</h2>
           <img src={currentCandidate.avatar_url} alt="Avatar" width={100} height={100} />
           <p>Location: {currentCandidate.location || "N/A"}</p>
           <p>Email: {currentCandidate.email || "N/A"}</p>
@@ -85,7 +85,7 @@ const CandidateSearch = () => {
       <div>
         <button
           onClick={() => {
-            const currentIndex = candidates.findIndex((c) => c.login === currentCandidate?.login);
+            const currentIndex = candidates.findIndex((c) => c.username === currentCandidate?.username);
             const nextIndex = currentIndex + 1;
 
             if (nextIndex < candidates.length) {
