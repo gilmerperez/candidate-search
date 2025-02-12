@@ -5,13 +5,13 @@ import { searchGithub, searchGithubUser } from '../api/API';
 
 // Interface for Candidate Object
 interface Candidate {
-  name?: string;
   login?: string;
-  location?: string;
+  name?: string;
   avatar_url?: string;
+  location?: string;
   email?: string | null;
-  html_url?: string;
   company?: string | null;
+  html_url?: string;
 }
 
 const CandidateSearch = () => {
@@ -35,7 +35,7 @@ const CandidateSearch = () => {
           users.map(async (user: { login: string }) => {
             const userDetails = await searchGithubUser(user.login);
             return {
-              login: user.login,
+              login: userDetails.login,
               name: userDetails.name,
               avatar_url: userDetails.avatar_url,
               location: userDetails.location,
@@ -72,12 +72,13 @@ const CandidateSearch = () => {
     {/* Current Candidate Info */}
     {currentCandidate && (
         <div>
-          <h2>{currentCandidate.name || currentCandidate.login}</h2>
+          <h2>{currentCandidate.login}</h2>
+          <h3>{currentCandidate.name}</h3>
           <img src={currentCandidate.avatar_url} alt="Avatar" width={100} height={100} />
           <p>Location: {currentCandidate.location || "N/A"}</p>
           <p>Email: {currentCandidate.email || "N/A"}</p>
           <p>Company: {currentCandidate.company || "N/A"}</p>
-          <a href={currentCandidate.html_url} target="_blank" rel="noopener noreferrer">GitHub Profile</a>
+          <a href={currentCandidate.html_url || "N/A"} target="_blank" rel="noopener noreferrer">GitHub Profile</a>
         </div>
     )}
 
