@@ -72,9 +72,9 @@ const CandidateSearch = () => {
     {/* Current Candidate Info */}
     {currentCandidate && (
         <div>
-          <h2>{currentCandidate.login}</h2>
-          <h3>{currentCandidate.name}</h3>
-          <img src={currentCandidate.avatar_url} alt="Avatar" width={100} height={100} />
+          <h2>{currentCandidate.login || "N/A"}</h2>
+          <h3>{currentCandidate.name || "N/A"}</h3>
+          <img src={currentCandidate.avatar_url || "N/A"} alt="Avatar" width={100} height={100} />
           <p>Location: {currentCandidate.location || "N/A"}</p>
           <p>Email: {currentCandidate.email || "N/A"}</p>
           <p>Company: {currentCandidate.company || "N/A"}</p>
