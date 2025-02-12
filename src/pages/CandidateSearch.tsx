@@ -3,16 +3,7 @@ import { useState, useEffect } from 'react';
 // Import searchGithub and searchGithubUser from API
 import { searchGithub, searchGithubUser } from '../api/API';
 
-// Interface for Candidate Object
-interface Candidate {
-  login?: string;
-  name?: string;
-  avatar_url?: string;
-  location?: string;
-  email?: string | null;
-  company?: string | null;
-  html_url?: string;
-}
+import { Candidate } from '../interfaces/Candidate.interface';
 
 const CandidateSearch = () => {
   // Define state variables for candidates: Array to store the list of candidates 

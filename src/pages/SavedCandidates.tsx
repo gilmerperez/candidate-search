@@ -1,16 +1,7 @@
 // Import useState and useEffect from React
 import { useState, useEffect } from 'react';
 
-// Interface for Candidate Object
-interface Candidate {
-  login?: string;
-  name?: string;
-  avatar_url?: string;
-  location?: string;
-  email?: string | null;
-  company?: string | null;
-  html_url?: string;
-}
+import { Candidate } from '../interfaces/Candidate.interface';
 
 const SavedCandidates = () => {
   // State variable for savedCandidates
