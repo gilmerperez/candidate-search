@@ -1,8 +1,8 @@
 // Import useState and useEffect from React
 import { useState, useEffect } from 'react';
-// Import searchGithub and searchGithubUser from API
+// Import searchGithub and searchGithubUser from API.tsx
 import { searchGithub, searchGithubUser } from '../api/API';
-
+// Import Candidate interface Candidate.interface.tsx
 import { Candidate } from '../interfaces/Candidate.interface';
 
 const CandidateSearch = () => {
