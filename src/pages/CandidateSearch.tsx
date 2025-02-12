@@ -106,6 +106,15 @@ const CandidateSearch = () => {
               savedCandidates.push(currentCandidate);
               localStorage.setItem("savedCandidates", JSON.stringify(savedCandidates));
             }
+
+            const currentIndex = candidates.findIndex((c) => c.login === currentCandidate?.login);
+            const nextIndex = currentIndex + 1;
+
+            if (nextIndex < candidates.length) {
+              setCurrentCandidate(candidates[nextIndex]);
+            } else {
+              setError("No more candidates available");
+            }
           }}>
           Save
         </button>
