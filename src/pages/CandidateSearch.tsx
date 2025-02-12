@@ -2,20 +2,19 @@
 import { useState, useEffect } from 'react';
 // Import searchGithub and searchGithubUser from API.tsx
 import { searchGithub, searchGithubUser } from '../api/API';
-// Import Candidate interface Candidate.interface.tsx
+// Import Candidate interface from Candidate.interface.tsx
 import { Candidate } from '../interfaces/Candidate.interface';
 
 const CandidateSearch = () => {
-  // Define state variables for candidates: Array to store the list of candidates 
+  // State variable for candidates: Array to store the list of candidates
   const [candidates, setCandidates] = useState<Candidate[]>([]);
-  // Define state variables for currentCandidate: Object to store details of the currently displayed candidate
+  // State variable for currentCandidate: Object to store details of the currently displayed candidate
   const [currentCandidate, setCurrentCandidate] = useState<Candidate | null>(null);
-  // Define state variables for error: String to store any error messages
+  // State variable for error: String to store any error messages
   const [error, setError] = useState<string>("");
 
-  // Use `useEffect` to call the `searchGithub` function when the component mounts
+  // Call the searchGithub function when the component mounts
   useEffect(() => {
-    // Inside the `useEffect`, handle the following:
     const fetchCandidates = async () => {
       try {
         // Call searchGithub to get the list of users
@@ -43,25 +42,24 @@ const CandidateSearch = () => {
         if (detailedUsers.length > 0) {
           setCurrentCandidate(detailedUsers[0]);
         }
-      } catch (err) {
+      } catch (error) {
         // If it cannot find candidate, throw error message
-        setError("failed to fetch candidates");
+        setError("Failed to fetch candidates");
       }
     };
-
+    
     fetchCandidates();
   }, []);
 
-  {/* Display the current candidate's information */}
   return (
     <>
-    <h1>Candidate Search</h1>
+      <h1>Candidate Search</h1>
 
-    {/* Error message if failed to fetch */}
-    {error && <p style={{ color: "red" }}>{error}</p>}
+      {/* Error message if failed to fetch candidate */}
+      {error && <p style={{ color: "red" }}>{error}</p>}
 
-    {/* Current Candidate Info */}
-    {currentCandidate && (
+      {/* Displays current candidate's information */}
+      {currentCandidate && (
         <div>
           <h2>{currentCandidate.login || "N/A"}</h2>
           <h3>{currentCandidate.name || "N/A"}</h3>
@@ -71,13 +69,15 @@ const CandidateSearch = () => {
           <p>Company: {currentCandidate.company || "N/A"}</p>
           <a href={currentCandidate.html_url || "N/A"} target="_blank" rel="noopener noreferrer">GitHub Profile</a>
         </div>
-    )}
+      )}
 
-      {/* Next Button: Move to the next candidate in the `candidates` array. Update `currentCandidate` with the next candidate's data */}
+      {/* Move to the next candidate in the candidates array and update currentCandidate with the next candidate's information */}
       <div>
         <button
           onClick={() => {
-            const currentIndex = candidates.findIndex((c) => c.login === currentCandidate?.login);
+            const currentIndex = candidates.findIndex(
+              (c) => c.login === currentCandidate?.login
+            );
             const nextIndex = currentIndex + 1;
 
             if (nextIndex < candidates.length) {
@@ -89,16 +89,23 @@ const CandidateSearch = () => {
           Next
         </button>
 
-        {/* Save Button: Save the current candidate to localStorage. Optionally, add the candidate to a list of "saved" candidates for later viewing */}
+        {/* Save the current candidate to localStorage. This adds the candidate to a list of saved candidates in SavedCandidates.tsx */}
         <button
           onClick={() => {
             if (currentCandidate) {
-              const savedCandidates = JSON.parse(localStorage.getItem("savedCandidates") || "[]");
+              const savedCandidates = JSON.parse(
+                localStorage.getItem("savedCandidates") || "[]"
+              );
               savedCandidates.push(currentCandidate);
-              localStorage.setItem("savedCandidates", JSON.stringify(savedCandidates));
+              localStorage.setItem(
+                "savedCandidates",
+                JSON.stringify(savedCandidates)
+              );
             }
 
-            const currentIndex = candidates.findIndex((c) => c.login === currentCandidate?.login);
+            const currentIndex = candidates.findIndex(
+              (c) => c.login === currentCandidate?.login
+            );
             const nextIndex = currentIndex + 1;
 
             if (nextIndex < candidates.length) {

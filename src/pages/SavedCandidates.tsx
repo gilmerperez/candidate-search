@@ -1,13 +1,13 @@
 // Import useState and useEffect from React
 import { useState, useEffect } from 'react';
-// Import Candidate interface Candidate.interface.tsx
+// Import Candidate interface from Candidate.interface.tsx
 import { Candidate } from '../interfaces/Candidate.interface';
 
 const SavedCandidates = () => {
-  // State variable for savedCandidates
+  // State variable for savedCandidates: Array to store the list of candidates
   const [savedCandidates, setSavedCandidates] = useState<Candidate[]>([]);
 
-  // useEffect to load in candidates from localStorage
+  // Load in candidates from localStorage
   useEffect(() => {
     const storedCandidates = JSON.parse(localStorage.getItem("savedCandidates") || "[]");
     setSavedCandidates(storedCandidates);
@@ -22,11 +22,13 @@ const SavedCandidates = () => {
 
   return (
     <>
-      <h1>Potential Candidates</h1>
+      <h1>Saved Candidates</h1>
 
+      {/* If there are candidates to show, display the following data */}
       {savedCandidates.length > 0 ? (
         <table>
           <thead>
+            {/* Table Headings */}
             <tr>
               <th>Username</th>
               <th>Name</th>
@@ -38,6 +40,8 @@ const SavedCandidates = () => {
               <th>Action</th>
             </tr>
           </thead>
+
+          {/* Table Content */}
           <tbody>
             {savedCandidates.map((candidate) => (
               <tr key={candidate.login}>
@@ -54,7 +58,8 @@ const SavedCandidates = () => {
           </tbody>
         </table>
       ) : (
-        <p>No saved candidates.</p>
+        // If there are no saved candidates, display the following message
+        <p>No saved candidates</p>
       )}
     </>
   );
