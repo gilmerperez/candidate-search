@@ -3,13 +3,13 @@ import { useState, useEffect } from 'react';
 
 // Interface for Candidate Object
 interface Candidate {
-  name?: string;
   login?: string;
-  location?: string;
+  name?: string;
   avatar_url?: string;
+  location?: string;
   email?: string | null;
-  html_url?: string;
   company?: string | null;
+  html_url?: string;
 }
 
 const SavedCandidates = () => {
@@ -57,9 +57,7 @@ const SavedCandidates = () => {
                 <td>{candidate.email || "N/A"}</td>
                 <td>{candidate.company || "N/A"}</td>
                 <td>{candidate.html_url || "N/A"}</td>
-                <td>
-                  <button onClick={() => removeCandidate(candidate.login)}>Remove</button>
-                </td>
+                <td><button onClick={() => candidate.login && removeCandidate(candidate.login)}>Remove</button></td>
               </tr>
             ))}
           </tbody>
