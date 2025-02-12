@@ -1,6 +1,6 @@
 // Import useState and useEffect from React
 import { useState, useEffect } from 'react';
-
+// Import Candidate interface Candidate.interface.tsx
 import { Candidate } from '../interfaces/Candidate.interface';
 
 const SavedCandidates = () => {
