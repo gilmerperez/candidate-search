@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 // Interface for Candidate Object
 interface Candidate {
   name?: string;
-  username?: string;
+  login?: string;
   location?: string;
   avatar_url?: string;
   email?: string | null;
@@ -23,8 +23,8 @@ const SavedCandidates = () => {
   }, []);
 
   // Remove candidate function
-  const removeCandidate = (username: unknown) => {
-    const updatedCandidates = savedCandidates.filter((candidate) => candidate.username !== username);
+  const removeCandidate = (login: unknown) => {
+    const updatedCandidates = savedCandidates.filter((candidate) => candidate.login !== login);
     setSavedCandidates(updatedCandidates);
     localStorage.setItem("savedCandidates", JSON.stringify(updatedCandidates));
   };
@@ -38,7 +38,7 @@ const SavedCandidates = () => {
           <thead>
             <tr>
               <th>Name</th>
-              <th>username</th>
+              <th>login</th>
               <th>Location</th>
               <th>Avatar</th>
               <th>Email</th>
@@ -48,9 +48,9 @@ const SavedCandidates = () => {
           </thead>
           <tbody>
             {savedCandidates.map((candidate) => (
-              <tr key={candidate.username}>
+              <tr key={candidate.login}>
                 <td>{candidate.name || "N/A"}</td>
-                <td>{candidate.username}</td>
+                <td>{candidate.login}</td>
                 <td>{candidate.location || "N/A"}</td>
                 <td>
                   <img src={candidate.avatar_url} alt="Avatar" width={50} height={50} />
@@ -58,7 +58,7 @@ const SavedCandidates = () => {
                 <td>{candidate.email || "N/A"}</td>
                 <td>{candidate.company || "N/A"}</td>
                 <td>
-                  <button onClick={() => removeCandidate(candidate.username)}>Remove</button>
+                  <button onClick={() => removeCandidate(candidate.login)}>Remove</button>
                 </td>
               </tr>
             ))}
