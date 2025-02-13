@@ -11,7 +11,7 @@ This project demonstrates practical implementation of TypeScript with React, API
 ## Table of Contents
 
 - [Usage](#usage)
-- [Mock-Up](#mock-up)
+- [Mock Up](#mock-up)
 - [Instructions](#instructions)
 - [Key Features](#key-features)
 - [Technology Stack](#technology-stack)
@@ -36,13 +36,13 @@ To run the application locally, follow these steps:
 4. Open the application in your browser at http://localhost:5173 (or the specified port).
 
 
-## Mock-Up
+## Mock Up
 
 The following images show the web application's appearance and functionality:
 
-![The candidate search page displays a candidate's information and allows the user to accept or reject the candidate and view a list of potential candidates.](./images/sc1.jpg)
+![The search candidate page displays a candidate's information and allows the user to save or go to the next candidate.](./images/sc1.jpg)
 
-![The saved candidates page displays a list of potential candidates and allows the user to reject a candidate.](./images/sc2.jpg)
+![The saved candidates page displays a list of potential candidates and allows the user to remove a candidate.](./images/sc2.jpg)
 
 ## Instructions
 
