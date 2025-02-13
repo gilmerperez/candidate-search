@@ -53,6 +53,7 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  margin: 20px;
 }
 button:hover {
   border-color: #646cff;
@@ -76,12 +77,20 @@ button:focus-visible {
 }
 
 main {
-  color: #fff;
+  background: linear-gradient(
+    180deg,
+    rgb(32, 44, 136) 0%,
+    rgba(9, 9, 121, 1) 15%,
+    rgba(0, 2, 18, 1) 100%
+  );
   width: 100%;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 5px solid black;
+  border-radius: 10px;
+  padding: 20px;
 }
 
 tr {
@@ -96,13 +105,15 @@ tbody tr:nth-child(odd) {
 
 .nav {
   display: flex;
-  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
   padding: 1em 2em;
 }
 
 .nav-item {
-  padding: 0 0.5rem;
+  padding: 10px;
   list-style: none;
+  font-size: 20px;
 }
 
 .nav-link {
@@ -117,4 +128,25 @@ tbody tr:nth-child(odd) {
 .table {
   width: 80vw;
   table-layout: fixed;
+}
+
+th, td {
+  padding: 1rem 1.5rem;
+}
+
+
+
+h2, h3, p, a {
+  font-weight: 500;
+}
+
+div {
+  text-align: center;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }

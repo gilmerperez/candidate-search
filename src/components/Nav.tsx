@@ -5,7 +5,7 @@ const Nav = () => {
 
   // TODO: Add necessary code to display the navigation bar and link between the pages
   return (
-    <nav className="nav nav-pills justify-content-center p-3 bg-light">
+    <nav className="nav nav-pills nav-bar">
       <ul className="nav nav-pills">
         <li className="nav-item"><Link to="/" className={currentPage === "/" ? "nav-link active" : "nav-link"}>Candiate Search</Link></li>
         <li className="nav-item"><Link to="/SavedCandidates" className={currentPage === "/SavedCandidates" ? "nav-link active" : "nav-link"}>Saved Candidates</Link></li>
