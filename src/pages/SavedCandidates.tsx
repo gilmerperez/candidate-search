@@ -51,7 +51,7 @@ const SavedCandidates = () => {
                 <td>{candidate.location || "N/A"}</td>
                 <td>{candidate.email || "N/A"}</td>
                 <td>{candidate.company || "N/A"}</td>
-                <td>{candidate.html_url || "N/A"}</td>
+                <td><a href={candidate.html_url || "N/A"} target="_blank">GitHub Profile</a></td>
                 <td><button onClick={() => candidate.login && removeCandidate(candidate.login)}>Remove</button></td>
               </tr>
             ))}
